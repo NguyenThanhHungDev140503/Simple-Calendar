@@ -1,0 +1,14 @@
+#.dockerignore chỉ ảnh hưởng đến quá trình build Docker image, trong khi volumes được sử dụng trong runtime. Do đó, nếu chỉ dùng .dockerignore mà không có volume cấu hình, thư mục node_modules từ máy chủ vẫn có thể được mount vào container thông qua dòng ./angular-calendar:/app, gây ra xung đột như bình thường.
+
+
+# Dependencies
+node_modules
+
+# Build outputs
+angular-calendar/dist
+angular-calendar/build
+
+# IDE files
+*.swp
+*.log
+.DS_Store

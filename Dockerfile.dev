@@ -1,0 +1,13 @@
+# Use an official Node.js runtime as a parent image
+FROM node:18
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY angular-calendar/package*.json ./
+RUN npm install
+
+
+# The command to run the app in watch mode
+CMD ["ng", "build", "--watch", "--configuration", "development"]
