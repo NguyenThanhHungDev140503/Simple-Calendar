@@ -47,9 +47,14 @@ docker build -f Dockerfile.dev -t nginx-demo-dev .
 ### Running Tests in Different Browsers
 ```bash
 cd angular-calendar
+# Run tests using the automated script (auto-detects Chrome/Chromium)
+npm test
 # Run tests with specific browser configurations
 npm test -- --browsers=Chrome,Firefox
-npm test -- --browsers=ChromeHeadlessCI  # For CI environment
+# Manual headless Chrome testing (if needed)
+CHROME_BIN=/snap/bin/chromium ng test -- --browsers=ChromeHeadlessCI --watch=false
+# Alternative headless browsers
+npm test -- --browsers=FirefoxHeadless  # Requires Firefox snap installation
 ```
 
 ## Project Architecture
@@ -104,6 +109,9 @@ Karma configuration supports multiple browsers:
 - Local development: Chrome, Firefox, Safari
 - CI/CD: ChromeHeadless with `--no-sandbox --disable-web-security` flags
 - Custom Firefox headless configuration available
+
+**Automated Browser Detection:**
+The `test-headless.sh` script automatically detects available Chrome/Chromium installations using the `which` command and sets the appropriate `CHROME_BIN` environment variable. This eliminates the need to manually configure browser paths on different systems.
 
 ### Security Considerations
 

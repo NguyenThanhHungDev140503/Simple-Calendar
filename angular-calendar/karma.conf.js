@@ -39,6 +39,10 @@ module.exports = function (config) {
     browsers: ['Chrome', 'Firefox', 'Safari'],
     // Cấu hình custom launchers
     customLaunchers: {
+      ChromeHeadlessCustom: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu', '--disable-web-security', '--disable-dev-shm-usage']
+      },
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox', '--disable-web-security']
